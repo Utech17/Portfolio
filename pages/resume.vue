@@ -1,14 +1,8 @@
-<script setup>
-useHead({
-  title: 'Resume',
-})
-</script>
-
 <template>
   <article class="resume active" data-page="resume">
     <header>
       <h2 class="h2 article-title">
-        {{ $t('pageTitles.resume') }}
+        Resumen
       </h2>
     </header>
 
@@ -19,51 +13,20 @@ useHead({
         </div>
 
         <h3 class="h3">
-          Education
+          Educación
         </h3>
       </div>
 
       <ol class="timeline-list">
         <li class="timeline-item">
           <h4 class="h4 timeline-item-title">
-            University school of the arts
+            Instituto Universitario Jesus Obrero
           </h4>
 
-          <span>2007 — 2008</span>
+          <span>2023 — 2025</span>
 
           <p class="timeline-text">
-            Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-            quas molestias
-            exceptur.
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">
-            New york academy of art
-          </h4>
-
-          <span>2006 — 2007</span>
-
-          <p class="timeline-text">
-            Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda
-            est
-            omnis..
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">
-            High school of art and design
-          </h4>
-
-          <span>2002 — 2004</span>
-
-          <p class="timeline-text">
-            Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed
-            consequuntur
-            magni dolores
-            eos.
+            T.S.U. en Informática
           </p>
         </li>
       </ol>
@@ -76,114 +39,43 @@ useHead({
         </div>
 
         <h3 class="h3">
-          Experience
+          Experiencia Profesional
         </h3>
       </div>
 
       <ol class="timeline-list">
         <li class="timeline-item">
           <h4 class="h4 timeline-item-title">
-            Creative director
+            Alcaldía de Iribarren
           </h4>
 
-          <span>2015 — Present</span>
-
-          <p class="timeline-text">
-            Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-            qvuas
-            molestias
-            exceptur.
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">
-            Art director
-          </h4>
-
-          <span>2013 — 2015</span>
-
-          <p class="timeline-text">
-            Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-            quas molestias
-            exceptur.
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">
-            Web designer
-          </h4>
-
-          <span>2010 — 2013</span>
-
-          <p class="timeline-text">
-            Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-            quas molestias
-            exceptur.
-          </p>
+          <span>Mayo 2025 - Presente</span>
+          
+          <ul>
+            <li>
+              <p class="timeline-text">
+                Desarrollé el backend para la generación automática de informes técnicos en PDF, 
+                asegurando calidad y seguridad de datos con validaciones y DTOs. Implementé generación 
+                dinámica con PDFKit y mejoré el Sistema de Gestión de Bienes Integral para optimizar recursos. 
+                Refactoricé para lograr mayor mantenibilidad y escalabilidad.
+              </p>
+            </li>
+          </ul>
         </li>
       </ol>
     </section>
 
     <section class="skill">
       <h3 class="h3 skills-title">
-        My skills
+        Idiomas y herramientas
       </h3>
 
-      <ul class="skills-list content-card">
-        <li class="skills-item">
-          <div class="title-wrapper">
-            <h5 class="h5">
-              Web design
-            </h5>
-            <data value="80">80%</data>
-          </div>
-
-          <div class="skill-progress-bg">
-            <div class="skill-progress-fill" style="width: 80%;" />
-          </div>
-        </li>
-
-        <li class="skills-item">
-          <div class="title-wrapper">
-            <h5 class="h5">
-              Graphic design
-            </h5>
-            <data value="70">70%</data>
-          </div>
-
-          <div class="skill-progress-bg">
-            <div class="skill-progress-fill" style="width: 70%;" />
-          </div>
-        </li>
-
-        <li class="skills-item">
-          <div class="title-wrapper">
-            <h5 class="h5">
-              Branding
-            </h5>
-            <data value="90">90%</data>
-          </div>
-
-          <div class="skill-progress-bg">
-            <div class="skill-progress-fill" style="width: 90%;" />
-          </div>
-        </li>
-
-        <li class="skills-item">
-          <div class="title-wrapper">
-            <h5 class="h5">
-              WordPress
-            </h5>
-            <data value="50">50%</data>
-          </div>
-
-          <div class="skill-progress-bg">
-            <div class="skill-progress-fill" style="width: 50%;" />
-          </div>
-        </li>
-      </ul>
+      <div class="skills-list content-card">
+        <technologies-section/>
+      </div>
     </section>
   </article>
 </template>
+
+<script setup>
+</script>

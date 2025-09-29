@@ -1,3 +1,7 @@
+<template>
+  <Button :icon="themeColor === 'dark' ? 'pi pi-sun' : 'pi pi-moon'" @click="toggleDark" />
+</template>
+
 <script setup>
 const color = useColorMode()
 
@@ -8,7 +12,3 @@ const themeColor = computed(() => {
   return color.value
 })
 </script>
-
-<template>
-  <Button :icon="themeColor === 'dark' ? 'pi pi-sun' : 'pi pi-moon'" @click="toggleDark" />
-</template>

@@ -1,17 +1,21 @@
-<script setup>
-import { useI18n } from 'vue-i18n'
-const { locale } = useI18n({ useScope: 'global' })
+<template>
+    <main class="relative">
+      <Sidebar />
+      <div class="main-content">
+        <Navbar />
+        <slot />
+      </div>
+    </main>
+</template>
 
+<script setup>
 useHead({
-  htmlAttrs: {
-    lang: locale,
-  },
   titleTemplate: (pageTitle) => {
-    return pageTitle ? `${pageTitle} - Azad Furkan ŞAKAR` : 'Azad Furkan ŞAKAR'
+    return pageTitle = 'Utech17 - Desarrollador'
   },
   link: [
     {
-      rel: 'icon', type: 'image/png', href: '/nuxt.png',
+      rel: 'icon', type: 'image/png', href: '/icon.png',
     },
     {
       rel: 'preconnect',
@@ -41,14 +45,3 @@ useHead({
   ],
 })
 </script>
-
-<template>
-  <main class="relative">
-    <Sidebar />
-    <div class="main-content">
-      <Navbar />
-      <slot />
-    </div>
-    <CookieBar />
-  </main>
-</template>

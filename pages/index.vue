@@ -1,178 +1,63 @@
-<script setup>
-import { useI18n } from 'vue-i18n'
-
-useHead({
-})
-
-onMounted(() => {
-  useLocaleStore()
-})
-
-const { locale } = useI18n({ useScope: 'global' })
-
-/* Testimonials */
-const { data: testimonials } = await useFetch('/api/testimonials')
-
-const testimonialItem = ref({})
-const activeModal = ref(false)
-const activeOverlay = ref(false)
-
-function showTestimonial(id) {
-  testimonialItem.value = testimonials.value.find(item => item.id === id)
-  activeModal.value = true
-  activeOverlay.value = true
-}
-
-function closeTestimonaial() {
-  testimonialItem.value = {}
-  activeModal.value = false
-  activeOverlay.value = false
-}
-/* Testimonials */
-
-/* Services */
-const { data: services } = await useFetch('/api/services')
-</script>
-
 <template>
   <article class="about active" data-page="about">
     <header>
       <h2 class="h2 article-title">
-        {{ $t('pageTitles.about') }}
+        Hola, soy Miguel.
       </h2>
     </header>
 
     <section class="about-text">
       <p>
-        I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-        I enjoy
-        turning complex problems into simple, beautiful and intuitive designs.
+        Soy un desarrollador backend apasionado por la informática, con conocimientos sólidos en 
+        <strong>aplicaciones, redes y servidores web</strong>. Me motiva crear soluciones eficientes y escalables, 
+        siempre enfocado en aportar valor real a los proyectos en los que participo. Disfruto trabajar en equipo, 
+        compartir ideas y contribuir activamente al desarrollo de nuevas propuestas, asumiendo cada reto con 
+        responsabilidad y compromiso.
       </p>
 
       <p>
-        My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-        Moreover, I
-        add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-        across your
-        message and identity in the most creative way. I created web design for many famous brand companies.
+        Mi enfoque profesional está orientado hacia la <strong>mejora continua</strong>, la innovación y la 
+        <strong>excelencia técnica</strong>. Me caracterizo por mantener un fuerte sentido ético y profesional, 
+        fomentando la confianza y la colaboración dentro de los equipos. Estas cualidades me permiten integrarme 
+        de forma efectiva en distintos entornos de trabajo y aportar soluciones que faciliten el logro de los 
+        objetivos planteados.
+      </p>
+
+      <p>
+        Además, tengo un interés constante por ampliar mis habilidades y conocimientos, manteniéndome actualizado 
+        en nuevas tecnologías y buenas prácticas del desarrollo backend. Mi meta es seguir creciendo como 
+        profesional, contribuyendo en proyectos que representen un impacto positivo y que ofrezcan desafíos 
+        significativos.
       </p>
     </section>
 
-    <!-- service -->
-
     <section class="service">
       <h3 class="h3 service-title">
-        What i'm doing?
+        ¿Qué estoy haciendo?
       </h3>
 
       <ul class="service-list">
         <ServiceItem v-for="service in services" :key="service.id" :service="service" />
       </ul>
     </section>
-
-    <!-- testimonials -->
-
-    <section class="testimonials">
-      <h3 class="h3 testimonials-title">
-        Testimonials
-      </h3>
-
-      <ul class="testimonials-list has-scrollbar">
-        <li v-for="testimonial in testimonials" :key="testimonial.id" class="testimonials-item" @click="showTestimonial(testimonial.id)">
-          <div class="content-card">
-            <figure class="testimonials-avatar-box">
-              <img :src="testimonial.image" alt="Daniel lewis" width="60">
-            </figure>
-
-            <h4 class="h4 testimonials-item-title">
-              {{ testimonial.title }}
-            </h4>
-
-            <div class="testimonials-text">
-              <p>{{ locale === 'en' ? testimonial.content?.en : testimonial.content?.tr }}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- testimonials modal -->
-
-    <div class="modal-container" :class="{ active: activeModal }">
-      <div v-show="activeModal" class="overlay" :class="{ active: activeOverlay }" />
-
-      <section class="testimonials-modal">
-        <button class="modal-close-btn" @click="closeTestimonaial">
-          <ion-icon name="close-outline" />
-        </button>
-
-        <div class="flex gap-5 mb-5 justify-start items-center">
-          <div class="modal-avatar-box">
-            <img :src="testimonialItem.image" alt="Daniel lewis" width="80">
-          </div>
-
-          <div class="modal-content">
-            <h4 class="h3 modal-title">
-              {{ testimonialItem.title }}
-            </h4>
-            <time datetime="2021-06-14">14 June, 2021</time>
-          </div>
-        </div>
-
-        <div class="flex gap-5 items-start">
-          <img class="my-auto hidden md:block" src="/images/icon-quote.svg" alt="quote icon">
-          <p class="text-justify text-gray-400 text-sm md:text-md" v-html="locale === 'en' ? testimonialItem.content?.en : testimonialItem.content?.tr" />
-        </div>
-        <div class="mt-2 flex justify-end text-sm text-gray-600 italic">
-          Company Co.
-        </div>
-      </section>
-    </div>
-
-    <!-- clients -->
-
-    <section class="clients">
-      <h3 class="h3 clients-title">
-        Clients
-      </h3>
-
-      <ul class="clients-list has-scrollbar">
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-1-color.png" alt="client logo">
-          </a>
-        </li>
-
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-2-color.png" alt="client logo">
-          </a>
-        </li>
-
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-3-color.png" alt="client logo">
-          </a>
-        </li>
-
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-4-color.png" alt="client logo">
-          </a>
-        </li>
-
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-5-color.png" alt="client logo">
-          </a>
-        </li>
-
-        <li class="clients-item">
-          <a href="#">
-            <img src="images/logo-6-color.png" alt="client logo">
-          </a>
-        </li>
-      </ul>
-    </section>
   </article>
 </template>
+
+<script setup>
+import IconNestjs from '@/components/icons/IconNestjs.vue';
+import IconFedora from '@/components/icons/IconFedora.vue';
+const services = ref([
+  {
+    id: 1,
+    title: 'NestJS',
+    description:'Framework para la creación de aplicaciones web modernas. Bajo el concepto de modularidad, porque me permite organizar la aplicación en módulos independientes, fáciles de mantener y escalar.',
+    icon: IconNestjs
+  },
+  {
+    id: 2,
+    title: 'Fedora',
+    description: 'En mis proyectos trabajo con Linux, porque me permite tener un entorno estable, seguro y flexible para desarrollar, probar y desplegar aplicaciones de manera eficiente.',
+    icon: IconFedora
+  },
+])
+</script>

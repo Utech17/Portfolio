@@ -1,40 +1,62 @@
 <template>
-  <div class="h-screen w-full flex items-center justify-center">
-    <h2 class="animate">
-      <img src="/afsakar-logo.png" class="w-40">
-    </h2>
+  <div class="loadingScreen">
+    <h1 class="utechText">
+      Utech<span class="highlight">17</span>
+      <span class="spinner"></span>
+    </h1>
   </div>
 </template>
 
 <style scoped>
-@keyframes load {
-    0% {
-        opacity: 0.08;
-        /* font-size: 10px; */
-        /* font-weight: 400; */
-        filter: blur(5px);
-        letter-spacing: 3px;
-    }
-
-    100% {
-        /* opacity: 1; */
-        /* font-size: 12px; */
-        /* font-weight:600; */
-        /* filter: blur(0); */
-    }
+.loadingScreen {
+  position: fixed;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(15, 15, 30, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.animate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: auto;
-    /* width: 350px; */
-    /* font-size:26px; */
-    font-family: Helvetica, sans-serif, Arial;
-    animation: load 1.2s infinite 0s ease-in-out;
-    animation-direction: alternate;
-    text-shadow: 0 0 1px white;
+.utechText {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #dcdcdc;
+  text-shadow: 0 0 10px #444, 0 0 20px #222;
+  animation: glitch 0.8s infinite;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.highlight {
+  color: #888;
+  text-shadow: 0 0 10px #333, 0 0 20px #111;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(0, 60, 255, 0.3);
+  border-top: 3px solid #3700ff;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
