@@ -49,7 +49,7 @@
             Alcaldía de Iribarren
           </h4>
 
-          <span>Mayo 2025 - Presente</span>
+          <span>Mayo 2025 - Diciembre 2025</span>
           
           <ul>
             <li>

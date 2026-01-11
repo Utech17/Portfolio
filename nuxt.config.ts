@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-09-11',
+  app: {
+    head: {
+      title: 'Utech17 Portfolio',
+    },
+  },
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',

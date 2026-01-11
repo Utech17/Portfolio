@@ -48,7 +48,7 @@
       </div>
 
       <ul class="project-list-grid">
-        <li v-for="project in projectList" :key="project.id" :class="{ active: activeCategory === project.category.id || activeCategory === 0 }" class="project-item" style="display:flex; align-items:center; justify-content:center;">
+        <li v-for="project in projectList" :key="project.id" :class="{ active: activeCategory === 0 || project.categories.some(c => c.id === activeCategory) }" class="project-item" style="display:flex; align-items:center; justify-content:center;">
           <CardProject
             :images="project.images"
             :title="project.title"
@@ -115,7 +115,11 @@ function prev() {
 
 const categories = ref([
   { id: 1, title: { en: 'Web' } },
-  { id: 2, title: { en: 'Escritorio' } }
+  { id: 2, title: { en: 'Escritorio' } },
+  { id: 3, title: { en: 'Frontend' } },
+  { id: 4, title: { en: 'Backend' } },
+  { id: 5, title: { en: 'Fullstack' } },
+  { id: 6, title: { en: 'Mobile' } },
 ])
 
 const activeCategory = ref(0)
@@ -131,14 +135,19 @@ function changeFilter(id) {
 
 const projectList = computed(() => {
   if (activeCategory.value === 0) return projects.value
-  return projects.value.filter(p => p.category.id === activeCategory.value)
+  return projects.value.filter(p => p.categories.some(c => c.id === activeCategory.value))
 })
 const projects = ref([
   {
     id: 1,
     images: ['/Fiscor/1.jpeg', '/Fiscor/2.jpeg', '/Fiscor/3.jpeg', '/Fiscor/4.jpeg', '/Fiscor/5.jpeg', '/Fiscor/6.jpeg'],
     title: 'Fiscor',
-    category: { id: 1, title: 'Web' },
+    categories: [
+      { id: 1, title: 'Web' },
+      { id: 3, title: 'Frontend' },
+      { id: 4, title: 'Backend' },
+      { id: 5, title: 'Fullstack' },
+    ],
     description: 'El sistema de control de gastos es una herramienta diseñada para ayudar a empresas e Instituciones Educativas a gestionar y supervisar sus gastos de manera eficiente y precisa. ',
     github: 'https://github.com/Utech17/Fiscor'
   },
@@ -146,8 +155,23 @@ const projects = ref([
     id: 2,
     images: ['/sgbi/sgbi.jpeg'],
     title: 'Sistema de Gestión de Bienes Integral',
-    category: { id: 1, title: 'Web' },
+    categories: [
+      { id: 1, title: 'Web' },
+      { id: 4, title: 'Backend' },
+      { id :3, title: 'Frontend' },
+    ],
     description: 'Optimización y desarrollo de funcionalidades con TypeScript, NestJS, Prisma, Mejora de rendimiento con vistas y procedimientos en PostgreSQL, Implementación de seguridad con decoradores, guards y JWT.',
+  },
+  {
+    id: 3,
+    images: ['/Galeria/1.png', '/Galeria/2.png', '/Galeria/3.png'],
+    title: 'Galeria Promo XL',
+    categories: [
+      { id: 1, title: 'Web' },
+      { id :3, title: 'Frontend' },
+    ],
+    description: 'Galeria Promo XL 2025 es una plataforma web inmersiva desarrollada con Nuxt 3, TypeScript y Tailwind CSS que recrea la experiencia de usuario premium de Pinterest. El diseño implementa una grilla interactiva tipo masonry, Scroll Infinito y un sistema de lightbox avanzado, todo optimizado meticulosamente mediante lazy loading para lograr una carga instantánea y una estabilidad visual (CLS) perfecta. A nivel de arquitectura, la aplicación se conecta directamente con Google Drive para gestionar y servir cientos de fotos y videos sin necesidad de un backend tradicional. Esto permite una integración multimedia ligera y eficiente, combinando un reproductor de video seguro y filtrado de categorías en tiempo real dentro de una interfaz moderna y altamente responsiva.',
+    github: 'https://github.com/Utech17/Galeria-Promo-XL'
   }
 ])
 </script>
@@ -261,5 +285,26 @@ const projects = ref([
 @keyframes modalFadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<style scoped>
+.carousel-github-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.carousel-github-btn:hover {
+  background: #222 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  border-color: #555;
 }
 </style>
